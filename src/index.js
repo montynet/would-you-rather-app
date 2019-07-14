@@ -1,16 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './components/App';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import {render} from 'react-dom';
+
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
 import reducer from './reducers';
 import middleware from './middleware';
 
-// Create  the Store to be used with redux
-export const store = createStore(reducer, middleware);
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
-ReactDOM.render(
+import App from './components/App';
+
+let store = createStore(reducer, middleware);
+
+render(
   <Provider store={store}>
-    <App />
-  </Provider>, document.getElementById('root'));
+    <App/>
+  </Provider>,
+  document.getElementById('root')
+);
